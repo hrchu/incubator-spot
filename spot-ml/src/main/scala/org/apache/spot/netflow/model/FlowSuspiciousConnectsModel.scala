@@ -170,7 +170,6 @@ object FlowSuspiciousConnectsModel {
 
     val ipWordCounts =
       sparkSession.sparkContext.union(srcWordCounts, dstWordCounts)
-        .reduceByKey(_ + _)
         .map({ case ((ip, word), count) => SpotLDAInput(ip, word, count) })
 
 
